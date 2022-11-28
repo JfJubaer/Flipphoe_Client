@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import toast from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Context/AuthProvider';
+import { Player } from '@lottiefiles/react-lottie-player';
 
 const SignUp = () => {
     const { createUser, updateUserProfile, } = useContext(AuthContext);
@@ -39,8 +40,17 @@ const SignUp = () => {
     }
 
     return (
-        <div>
+        <div className='lg:flex items-center'>
             <div>
+                <Player
+                    autoplay
+                    loop
+                    src="https://assets10.lottiefiles.com/packages/lf20_O2ci8jA9QF.json"
+                    style={{ height: '300px', width: '300px' }}
+                >
+                </Player>
+            </div>
+            <div >
                 <div className="mx-auto max-w-screen-xl px-4 py-16 sm:px-6 lg:px-8">
                     <div className="mx-auto max-w-lg">
                         <h1 className="text-center text-2xl font-bold text-indigo-600 sm:text-3xl">
@@ -158,9 +168,7 @@ const SignUp = () => {
 
                 </div>
             </div>
-            <div>
 
-            </div>
         </div>
     );
 };
