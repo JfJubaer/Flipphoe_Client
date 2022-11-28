@@ -150,7 +150,7 @@ const Login = () => {
                 <Player
                     autoplay
                     loop
-                    src="https://assets2.lottiefiles.com/packages/lf20_Au6z826BEy.json"
+                    src="https://assets9.lottiefiles.com/packages/lf20_ULeaW09pyz.json"
                     style={{ height: '300px', width: '300px' }}
                 >
                 </Player>
