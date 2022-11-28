@@ -1,5 +1,6 @@
 import React from 'react';
 import { Outlet } from 'react-router-dom';
+import Bio from '../Pages/Shared/Bio';
 import Cat from '../Pages/Shared/Cat';
 import Footer from '../Pages/Shared/Footer';
 import Navbar from '../Pages/Shared/Navbar';
@@ -12,10 +13,11 @@ const Main = () => {
                 <div className='col-span-7'>
                     <Outlet></Outlet>
                 </div>
-                <div className='lg:grid-cols-3 my-10'>
+                <div className='my-10'>
                     <Cat></Cat>
                 </div>
             </div>
+            <Bio></Bio>
             <Footer></Footer>
         </div>
     );

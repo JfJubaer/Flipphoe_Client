@@ -2,8 +2,8 @@ import React from 'react';
 
 const Advertise = () => {
     return (
-        <div>
-            <div className="card w-96 bg-base-100 shadow-xl image-full">
+        <div >
+            <div className="my-10  card w-full bg-base-100  image-full shadow-2xl">
                 <figure><img src="https://placeimg.com/400/225/arch" alt="Shoes" /></figure>
                 <div className="card-body">
                     <h2 className="card-title">Shoes!</h2>
