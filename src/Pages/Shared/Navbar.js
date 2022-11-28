@@ -1,8 +1,18 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import toast from 'react-hot-toast';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../../Context/AuthProvider';
 
 
 const Navbar = () => {
+    const { user, logOut } = useContext(AuthContext);
+    const handleLogout = () => {
+        console.log('out');
+        logOut()
+            .then(() => { })
+            .catch(() => { });
+        toast.error("User logged out");
+    };
     return (
         <div className="navbar bg-base-100 shadow-2xl">
             <div className="flex-1">
@@ -15,6 +25,44 @@ const Navbar = () => {
                     <li className='lg:block hidden'><Link>Item 1</Link></li>
                     <li className='lg:block hidden'><Link>Item 1</Link></li>
                     <li className='lg:block hidden'><Link>Item 1</Link></li>
+                    <li className='lg:block hidden'>
+                        {
+                            user ?
+                                <>
+                                    <div>
+                                        <button
+                                            onClick={handleLogout}
+                                            className='inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide text-black transition duration-200 rounded shadow-md bg-deep-purple-accent-400 hover:bg-deep-purple-accent-700 focus:shadow-outline focus:outline-none'
+                                            aria-label='Log out'
+                                            title='Log out'>
+                                            Log out
+                                        </button>
+                                    </div>
+                                    <div>
+
+                                    </div>
+                                </>
+                                :
+                                <div className="sm:flex sm:gap-4">
+                                    <Link
+                                        className="rounded-md bg-indigo-600 px-5 py-2.5 text-sm font-medium text-white shadow"
+                                        to='/login'
+                                    >
+                                        Login
+                                    </Link>
+
+                                    <div className="hidden sm:flex">
+                                        <Link
+                                            className="rounded-md bg-gray-100 px-5 py-2.5 text-sm font-medium text-indigo-600"
+                                            to='/signup'
+                                        >
+                                            Sign Up
+                                        </Link>
+                                    </div>
+                                </div>
+                        }
+                    </li>
+
                     <li tabIndex={0}>
                         <Link className='lg:hidden'>
                             Menu

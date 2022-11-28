@@ -1,4 +1,4 @@
-
+import { Player } from '@lottiefiles/react-lottie-player';
 import React, { useContext } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { FaGoogle } from 'react-icons/fa';
@@ -31,7 +31,6 @@ const Login = () => {
     }
 
     const handleLoginGoogle = () => {
-        console.log('hi')
         providerLogin()
             .then((result) => {
                 const user = result.user;
@@ -42,7 +41,7 @@ const Login = () => {
     }
     return (
 
-        <div>
+        <div className='lg:flex items-center'>
             <div>
                 <div className="mx-auto max-w-screen-xl px-4 py-16 sm:px-6 lg:px-8">
                     <div className="mx-auto max-w-lg">
@@ -145,7 +144,13 @@ const Login = () => {
                 </div>
             </div>
             <div>
-
+                <Player
+                    autoplay
+                    loop
+                    src="https://assets2.lottiefiles.com/packages/lf20_Au6z826BEy.json"
+                    style={{ height: '300px', width: '300px' }}
+                >
+                </Player>
             </div>
         </div>
 
