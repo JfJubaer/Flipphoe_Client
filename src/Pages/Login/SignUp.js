@@ -9,7 +9,6 @@ const SignUp = () => {
   const navigate = useNavigate();
   const handleRegister = (event) => {
     event.preventDefault();
-    console.log("clk");
     const form = event.target;
 
     const email = form.email.value;
@@ -27,7 +26,7 @@ const SignUp = () => {
     createUser(email, pass)
       .then((result) => {
         form.reset();
-        fetch("http://localhost:5000/login", {
+        fetch("https://server-kappa-roan.vercel.app/login", {
           method: "post",
           headers: {
             "content-type": "application/json",
@@ -79,7 +78,7 @@ const SignUp = () => {
               className="mt-6 mb-0 space-y-4 rounded-lg p-8 shadow-2xl"
               action=""
             >
-              <p className="text-lg font-medium">Enroll now!!!</p>
+              <p className="text-lg font-medium">SignUp now!!!</p>
 
               <div>
                 <label for="email" className="text-sm font-medium">
@@ -190,7 +189,7 @@ const SignUp = () => {
                 type="submit"
                 className="block w-full rounded-lg bg-indigo-600 px-5 py-3 text-sm font-medium text-white"
               >
-                Enroll
+                SignUp
               </button>
             </form>
           </div>

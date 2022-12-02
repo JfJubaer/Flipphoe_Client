@@ -9,6 +9,12 @@ import SignUp from "../Pages/Login/SignUp";
 import Products from "../Pages/Products/Products";
 import NoRoute from "./NoRoute";
 import MyProducts from "../Pages/AddProducts/MyProducts";
+import MyOrders from "../Pages/MyOrders/MyOrders"
+import Admin from "../Pages/Admin/Admin"
+import Admin2 from "../Pages/Admin/Admin2"
+import PrivateRoute from "../Routes/PrivateRoute"
+
+
 
 export const router = createBrowserRouter([
   {
@@ -37,17 +43,32 @@ export const router = createBrowserRouter([
       },
       {
         path: "/addproducts",
-        element: <AddProducts></AddProducts>,
+        element: <PrivateRoute><AddProducts></AddProducts></PrivateRoute>,
       },
       {
         path: "/myproducts",
-        element: <MyProducts></MyProducts>,
+        element: <PrivateRoute><MyProducts></MyProducts></PrivateRoute>,
       },
+      {
+        path: "/admin",
+        element: <PrivateRoute><Admin></Admin></PrivateRoute>,
+      },
+      {
+        path: "/admin2",
+        element: <PrivateRoute><Admin2></Admin2></PrivateRoute>,
+      },
+
       {
         path: "/cat/:id",
         element: <CatProducts></CatProducts>,
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/category/${params.id}`),
+          fetch(`https://server-kappa-roan.vercel.app/products/${params.id}`),
+      },
+      {
+        path: "/orders/:id",
+        element: <PrivateRoute><MyOrders></MyOrders></PrivateRoute>,
+        loader: ({ params }) =>
+          fetch(`https://server-kappa-roan.vercel.app/orders/${params.id}`),
       },
     ],
   },

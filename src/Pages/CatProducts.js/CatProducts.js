@@ -3,7 +3,7 @@ import { useLoaderData } from "react-router-dom";
 import Product from "../Products/Product";
 
 const CatProducts = () => {
-  const { products } = useLoaderData();
+  const products = useLoaderData();
   console.log("cat", products);
 
   return (

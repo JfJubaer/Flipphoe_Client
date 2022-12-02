@@ -1,6 +1,7 @@
 import React from 'react';
 
 const Advertise = () => {
+
     return (
         <div >
             <div className="my-10  card w-full bg-base-100  image-full shadow-2xl">

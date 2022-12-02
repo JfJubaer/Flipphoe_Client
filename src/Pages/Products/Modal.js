@@ -1,20 +1,37 @@
 import React, { useContext } from "react";
+import toast from "react-hot-toast";
 import { AuthContext } from "../../Context/AuthProvider";
 
 const Modal = ({ p }) => {
   const {
     name,
     picture,
-    originalPrice,
-    resalePrice,
-    location,
-    date,
-    isVerified,
-    seller,
+    price
   } = p;
   const { user } = useContext(AuthContext);
   const handleBooking = (event) => {
     event.preventDefault();
+    const form = event.target;
+    const email = form.email.value;
+    const name = form.name.value;
+    console.log(email, name);
+    const booking = {
+      email,
+      name,
+      picture,
+      price
+    }
+    fetch('https://server-kappa-roan.vercel.app/orders', {
+      method: 'POST',
+      headers: {
+        'content-type': 'application/json'
+      },
+      body: JSON.stringify(booking)
+    })
+      .then(res => res.json())
+      .then(data => { })
+    toast.success('successfully booked, please close the modal')
+    form.reset();
   };
   return (
     <div>
@@ -35,16 +52,13 @@ const Modal = ({ p }) => {
             >
               <input
                 type="text"
+                name="name"
                 defaultValue={name}
                 disabled
                 className="input w-full input-bordered "
               />
-              <select
-                name="slot"
-                className="select select-bordered w-full"
-              ></select>
+
               <input
-                name="name"
                 type="text"
                 defaultValue={user?.displayName}
                 disabled
@@ -63,6 +77,12 @@ const Modal = ({ p }) => {
                 name="phone"
                 type="text"
                 placeholder="Phone Number"
+                className="input w-full input-bordered"
+              />
+              <input
+                name="location"
+                type="text"
+                placeholder="Location"
                 className="input w-full input-bordered"
               />
               <br />

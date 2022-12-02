@@ -10,7 +10,7 @@ const MyProducts = () => {
   const { data, isLoading } = useQuery({
     queryKey: ["myproducts", user?.email],
     queryFn: () =>
-      fetch(`http://localhost:5000/myproducts/abc2@gmail.com`).then((res) =>
+      fetch(`https://server-kappa-roan.vercel.app/myproducts/${user.email}`).then((res) =>
         res.json()
       ),
   });

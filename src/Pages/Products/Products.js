@@ -7,7 +7,7 @@ const Products = () => {
   const { data: products = [] } = useQuery({
     queryKey: ["products123"],
     queryFn: () =>
-      fetch("http://localhost:5000/products").then((res) => res.json()),
+      fetch("https://server-kappa-roan.vercel.app/products").then((res) => res.json()),
   });
   console.log("prod", products);
   return (

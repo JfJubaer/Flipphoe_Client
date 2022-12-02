@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useNavigate } from "react-router-dom";
+import { AuthContext } from "../../Context/AuthProvider";
 
 const AddProducts = () => {
-  console.log("ljsflks");
+  const { user } = useContext(AuthContext);
   const navigate = useNavigate();
   const handleAdd = (event) => {
     event.preventDefault();
@@ -10,14 +11,26 @@ const AddProducts = () => {
     const form = event.target;
     const name = form.name.value;
     const price = form.price.value;
+    const rPrice = form.rPrice.value;
     const category = form.category.value;
+    const location = form.location.value;
+    const date = form.date.value;
+    const seller = form.seller.value;
+    const picture = form.picture.value;
     const product = {
-      name,
-      price,
-      category,
+      index: 0,
+      name: name,
+      resalePrice: price,
+      originalPrice: rPrice,
+      location,
+      date,
+      categoryId: category,
+      seller,
+      picture,
+      email: user.email
     };
     console.log(product);
-    fetch("http://localhost:5000/addproduct", {
+    fetch("https://server-kappa-roan.vercel.app/addproduct", {
       method: "post",
       headers: {
         "content-type": "application/json",
@@ -51,6 +64,56 @@ const AddProducts = () => {
         <div className="relative mt-1">
           <input
             type="text"
+            name="rPrice"
+            className="w-full rounded-lg border-gray-200 p-4 pr-12 text-sm shadow-sm"
+            placeholder=" Product real Price"
+          />
+
+          <span className="absolute inset-y-0 right-4 inline-flex items-center"></span>
+        </div>
+        <div className="relative mt-1">
+          <input
+            type="text"
+            name="date"
+            className="w-full rounded-lg border-gray-200 p-4 pr-12 text-sm shadow-sm"
+            placeholder="date"
+          />
+
+          <span className="absolute inset-y-0 right-4 inline-flex items-center"></span>
+        </div>
+        <div className="relative mt-1">
+          <input
+            type="text"
+            name="seller"
+            className="w-full rounded-lg border-gray-200 p-4 pr-12 text-sm shadow-sm"
+            placeholder="seller"
+          />
+
+          <span className="absolute inset-y-0 right-4 inline-flex items-center"></span>
+        </div>
+        <div className="relative mt-1">
+          <input
+            type="text"
+            name="picture"
+            className="w-full rounded-lg border-gray-200 p-4 pr-12 text-sm shadow-sm"
+            placeholder="picture"
+          />
+
+          <span className="absolute inset-y-0 right-4 inline-flex items-center"></span>
+        </div>
+        <div className="relative mt-1">
+          <input
+            type="text"
+            name="location"
+            className="w-full rounded-lg border-gray-200 p-4 pr-12 text-sm shadow-sm"
+            placeholder="location"
+          />
+
+          <span className="absolute inset-y-0 right-4 inline-flex items-center"></span>
+        </div>
+        <div className="relative mt-1">
+          <input
+            type="text"
             name="price"
             className="w-full rounded-lg border-gray-200 p-4 pr-12 text-sm shadow-sm"
             placeholder=" Product Price"
@@ -59,9 +122,9 @@ const AddProducts = () => {
           <span className="absolute inset-y-0 right-4 inline-flex items-center"></span>
         </div>
         <select name="category">
-          <option value={"01"}>abul</option>
-          <option value={"02"}>babul</option>
-          <option value={"03"}>kabul</option>
+          <option value={"01"}>Handset</option>
+          <option value={"02"}>Laptop</option>
+          <option value={"03"}>Camera</option>
         </select>
 
         <button

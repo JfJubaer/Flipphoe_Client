@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 const Cat = () => {
     const { data: categories = [] } = useQuery({
         queryKey: ['categories'],
-        queryFn: () => fetch('http://localhost:5000/categories').then(res => res.json())
+        queryFn: () => fetch('https://server-kappa-roan.vercel.app/categories').then(res => res.json())
 
     })
 
@@ -16,7 +16,7 @@ const Cat = () => {
                     <span>Category</span>
                 </li>
                 {categories.map((c, i) => <div key={i}>
-                    <Link to={`/cat/${c._id}`}>
+                    <Link to={`/cat/${c.cat}`}>
                         <li>
                             <div class="card card-side bg-base-100 shadow-xl">
                                 <figure><img className='w-36' src={c.picture} alt="" /></figure>

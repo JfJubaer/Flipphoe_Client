@@ -1,18 +1,19 @@
 import React, { useContext } from "react";
 import toast from "react-hot-toast";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Context/AuthProvider";
 import useRole from "../../hooks/useRole";
 
 const Navbar = () => {
   const { user, logOut } = useContext(AuthContext);
   const [role] = useRole(user?.email);
+  const navigate = useNavigate();
   console.log("role form navbar", role);
   const handleLogout = () => {
     console.log("out");
     logOut()
-      .then(() => {})
-      .catch(() => {});
+      .then(() => { navigate('/') })
+      .catch(() => { });
     toast.error("User logged out");
   };
   return (
@@ -28,25 +29,21 @@ const Navbar = () => {
             <Link to="/">Home</Link>
           </li>
           <li className="lg:block hidden">
-            <Link to="/blogs">BLogs</Link>
+            <Link to="/blogs">Blogs</Link>
           </li>
           <li className="lg:block hidden">
             <Link to="/products">Products</Link>
           </li>
+
           <li className="lg:block hidden">
-            <Link to="/">Item 1</Link>
-          </li>
-          <li className="lg:block hidden">
-            <Link to="/sdf">Item 1</Link>
-          </li>
-          <li>
             {role === "seller" && <Link to={"/addproducts"}>addproducts</Link>}
           </li>
-          <li>
+          <li className="lg:block hidden">
             {role === "seller" && <Link to={"/myproducts"}>myproducts</Link>}
           </li>
-          <li>{role === "buyer" && "my orders"}</li>
-          <li>{role === "admin" && "all sellers"}</li>
+          <li className="lg:block hidden">{role === "buyer" && <Link to={`/orders/${user?.email}`}>My orders</Link>}</li>
+          <li className="lg:block hidden">{role === "admin" && <Link to={`/admin`}>All buyers </Link>}</li>
+          <li className="lg:block hidden">{role === "admin" && <Link to={`/admin2`}>All sellers</Link>}</li>
           <li className="lg:block hidden">
             {user ? (
               <>
@@ -97,11 +94,59 @@ const Navbar = () => {
               </svg>
             </Link>
             <ul className="p-2 bg-base-100">
-              <li>
-                <Link>Submenu 1</Link>
+              <li >
+                <Link to="/">Home</Link>
               </li>
-              <li>
-                <Link>Submenu 2</Link>
+              <li >
+                <Link to="/blogs">Blogs</Link>
+              </li>
+              <li >
+                <Link to="/products">Products</Link>
+              </li>
+
+              <li >
+                {role === "seller" && <Link to={"/addproducts"}>addproducts</Link>}
+              </li>
+              <li >
+                {role === "seller" && <Link to={"/myproducts"}>myproducts</Link>}
+              </li>
+              <li >{role === "buyer" && <Link to={`/orders/${user?.email}`}>My orders</Link>}</li>
+              <li >{role === "admin" && <Link to={`/admin`}>All buyers </Link>}</li>
+              <li >{role === "admin" && <Link to={`/admin2`}>All sellers</Link>}</li>
+              <li >
+                {user ? (
+                  <>
+                    <div>
+                      <button
+                        onClick={handleLogout}
+                        className="inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide text-black transition duration-200 rounded shadow-md bg-deep-purple-accent-400 hover:bg-deep-purple-accent-700 focus:shadow-outline focus:outline-none"
+                        aria-label="Log out"
+                        title="Log out"
+                      >
+                        Log out
+                      </button>
+                    </div>
+                    <div></div>
+                  </>
+                ) : (
+                  <div className="lg:flex sm:gap-4">
+                    <Link
+                      className="rounded-md bg-indigo-600 px-5 py-2.5 text-sm font-medium text-white shadow"
+                      to="/login"
+                    >
+                      Login
+                    </Link>
+
+                    <div className="hidden sm:flex">
+                      <Link
+                        className="rounded-md bg-gray-100 px-5 py-2.5 text-sm font-medium text-indigo-600"
+                        to="/signup"
+                      >
+                        Sign Up
+                      </Link>
+                    </div>
+                  </div>
+                )}
               </li>
             </ul>
           </li>
