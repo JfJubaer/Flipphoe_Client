@@ -22,7 +22,7 @@ const Navbar = () => {
                 <ul className="menu menu-horizontal p-0">
                     <li className='lg:block hidden'><Link to='/'>Home</Link></li>
                     <li className='lg:block hidden'><Link to='/blogs'>BLogs</Link></li>
-                    <li className='lg:block hidden'><Link to='/'>Item 1</Link></li>
+                    <li className='lg:block hidden'><Link to='/products'>Products</Link></li>
                     <li className='lg:block hidden'><Link to='/'>Item 1</Link></li>
                     <li className='lg:block hidden'><Link to='/sdf'>Item 1</Link></li>
                     <li className='lg:block hidden'>
