@@ -1,18 +1,18 @@
-import React, { useEffect } from 'react';
-import { useLoaderData } from 'react-router-dom';
+import React from "react";
+import { useLoaderData } from "react-router-dom";
+import Product from "../Products/Product";
 
 const CatProducts = () => {
-    const { products } = useLoaderData();
-    useEffect(() => {
-        fetch('http://localhost:5000/products')
-            .then(res => res.json())
-            .then(data => console.log(data))
-    }, [])
-    return (
-        <div>
-            {products.length}
-        </div>
-    );
+  const { products } = useLoaderData();
+  console.log("cat", products);
+
+  return (
+    <div className=" grid lg:grid-cols-2 gap">
+      {products.map((p, i) => (
+        <Product key={i} p={p}></Product>
+      ))}
+    </div>
+  );
 };
 
 export default CatProducts;
