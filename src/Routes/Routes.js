@@ -39,7 +39,7 @@ export const router = createBrowserRouter([
       },
       {
         path: "/products",
-        element: <Products></Products>,
+        element: <PrivateRoute><Products></Products></PrivateRoute>,
       },
       {
         path: "/addproducts",
@@ -60,7 +60,7 @@ export const router = createBrowserRouter([
 
       {
         path: "/cat/:id",
-        element: <CatProducts></CatProducts>,
+        element: <PrivateRoute><CatProducts></CatProducts></PrivateRoute>,
         loader: ({ params }) =>
           fetch(`https://server-kappa-roan.vercel.app/products/${params.id}`),
       },

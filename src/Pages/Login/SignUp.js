@@ -57,7 +57,7 @@ const SignUp = () => {
   };
 
   return (
-    <div className="lg:flex items-center">
+    <div className="lg:flex items-center justify-center">
       <div>
         <Player
           autoplay

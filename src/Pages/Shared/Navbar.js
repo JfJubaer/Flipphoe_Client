@@ -1,3 +1,4 @@
+import { Player } from "@lottiefiles/react-lottie-player";
 import React, { useContext } from "react";
 import toast from "react-hot-toast";
 import { Link, useNavigate } from "react-router-dom";
@@ -19,19 +20,25 @@ const Navbar = () => {
   return (
     <div className="navbar bg-base-100 shadow-2xl">
       <div className="flex-1">
-        <Link to="/" className="btn btn-ghost normal-case text-xl">
+        <Link to="/" className="btn btn-ghost normal-case text-3xl font-bold text-indigo-900">
+          <Player
+            autoplay
+            loop
+            src="https://assets9.lottiefiles.com/packages/lf20_SPnqHN6Dq3.json"
+            style={{ height: "50px", width: "80px" }}
+          ></Player>
           Flipphoe
         </Link>
       </div>
       <div className="flex-none">
         <ul className="menu menu-horizontal p-0">
-          <li className="lg:block hidden">
+          <li className="lg:block hidden text-indigo-400">
             <Link to="/">Home</Link>
           </li>
-          <li className="lg:block hidden">
+          <li className="lg:block hidden text-indigo-400">
             <Link to="/blogs">Blogs</Link>
           </li>
-          <li className="lg:block hidden">
+          <li className="lg:block hidden text-indigo-400">
             <Link to="/products">Products</Link>
           </li>
 

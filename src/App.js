@@ -5,7 +5,7 @@ import { router } from './Routes/Routes';
 
 function App() {
   return (
-    <div >
+    <div className='image-full'>
       <RouterProvider router={router}>
       </RouterProvider>
       <Toaster></Toaster>
